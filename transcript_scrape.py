@@ -18,6 +18,5 @@ def link():
 
 load_dotenv()
 
-print(os.getenv("api_key"))
-
-
+print(os.getenv("api_key")) 
+#
