@@ -9,6 +9,13 @@
 <input type="submit">
 </form> 
 
+{% if transcript %}
+    {% for item in transcript %}
+        <p>{{ item.text }}</p>
+    {% endfor %}
+{% endif %}
+
 
 </body>
 </html> 
+
