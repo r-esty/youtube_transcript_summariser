@@ -20,4 +20,7 @@ variable "app_name" {
     default = "youtube_transcript"
 }
 
-
+variable "certificate_arn" {
+  description = "ACM  certificate ARN for HTTPS"
+  type        = string
+}

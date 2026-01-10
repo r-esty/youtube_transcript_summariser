@@ -33,6 +33,7 @@ module "alb" {
   public_1_id           = module.networking.public_1_id
   public_2_id           = module.networking.public_2_id
   alb_security_group_id = module.networking.alb_security_group_id
+  certificate_arn = "arn:aws:acm:eu-west-2:207567788282:certificate/8fa93397-8ccd-4bf1-a99f-990a0928a0f5"
 }
 
 module "ecs_service" {
