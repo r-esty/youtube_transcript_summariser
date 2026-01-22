@@ -42,3 +42,14 @@ variable "openai_api_key" {
   type      = string
   sensitive = true
 }
+
+variable "domain_name" {
+  type = string
+  default = "romeoesty.com"
+}
+
+variable "zone_id" {
+
+  type = string
+  
+}
