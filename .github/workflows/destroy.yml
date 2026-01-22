@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-                 
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -31,7 +31,7 @@ jobs:
 
       - name: Terraform Destroy
         working-directory: ./terraform
-        run: terraform destroy -auto-approve
         env:
           TF_VAR_openai_api_key: ${{ secrets.OPENAI_API_KEY }}
           TF_VAR_zone_id: ${{ secrets.AWS_ZONE_ID }}
+        run: terraform destroy -auto-approve
