@@ -1,25 +1,186 @@
- <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Summariser</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0f0f0f;
+            color: #f0f0f0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        h1 span { color: #ff4444; }
+
+        .subtitle {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            background: #0f0f0f;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: #f0f0f0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            margin-bottom: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #ff4444;
+        }
+
+        input[type="text"]::placeholder {
+            color: #444;
+        }
+
+        button {
+            width: 100%;
+            background: #ff4444;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.8rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        button:hover { opacity: 0.85; }
+
+        .result {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .result-label {
+            font-size: 0.8rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .result-label::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #22c55e;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .result p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #ccc;
+            font-weight: 300;
+        }
+
+        .error { color: #ff4444; }
+
+        .footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #444;
+            font-size: 0.78rem;
+        }
+
+        .footer a {
+            color: #444;
+            text-decoration: none;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .footer a:hover { color: #666; }
+    </style>
+</head>
 <body>
+    <div class="container">
 
-<h1>Youtube Transcript Generator </h1>
+        <h1>YouTube <span>Summariser</span></h1>
+        <p class="subtitle">Paste a YouTube link and get an AI-generated summary.</p>
 
- <form method="POST" autocomplete="off">
-<input type="text" name="link">
-<input type="submit">
-</form> 
+        <div class="card">
+            <form method="POST" autocomplete="off">
+                <label for="link">YouTube URL</label>
+                <input
+                    type="text"
+                    name="link"
+                    id="link"
+                    placeholder="https://www.youtube.com/watch?v=..."
+                    required
+                >
+                <button type="submit">Summarise</button>
+            </form>
+        </div>
 
+        {% if summary %}
+        <div class="result">
+            <div class="result-label">Summary</div>
+            {% if "Error" in summary %}
+                <p class="error">{{ summary }}</p>
+            {% else %}
+                <p>{{ summary }}</p>
+            {% endif %}
+        </div>
+        {% endif %}
 
+        <div class="footer">
+            <p>⚠️ Requires videos with transcripts enabled &nbsp;·&nbsp;
+            <a href="https://github.com/r-esty/youtube_transcript" target="_blank">GitHub</a></p>
+        </div>
 
-<!-- {% if transcript %}
-    {% for info in transcript %}
-        <p>{{ info.text }}</p>
-    {% endfor %}
-{% endif %} -->
-
-<p>{{ summary }}</p>
-
-
-
+    </div>
 </body>
-</html> 
+</html>
