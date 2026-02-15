@@ -9,6 +9,7 @@ on:
       - 'Dockerfile'
       - 'requirements.txt'
       - '.github/workflows/deploy.yml'
+      - 'templates/**'
 
 jobs:
   deploy:
