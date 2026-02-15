@@ -15,12 +15,12 @@ output "private_2_id" {
 
 output "public_1_id" {
   description = "ID of the public 1 subnet"
-  value       = aws_subnet.public_1.id  # ✓ public_1
+  value       = aws_subnet.public_1.id # ✓ public_1
 }
 
 output "public_2_id" {
   description = "ID of the public 2 subnet"
-  value       = aws_subnet.public_2.id  # ✓ public_2
+  value       = aws_subnet.public_2.id # ✓ public_2
 }
 
 output "alb_security_group_id" {

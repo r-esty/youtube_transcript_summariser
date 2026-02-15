@@ -134,17 +134,17 @@ resource "aws_vpc_security_group_ingress_rule" "alb" {
 resource "aws_vpc_security_group_egress_rule" "alb" {
   security_group_id = aws_security_group.alb.id
   cidr_ipv4         = "0.0.0.0/0"
-  ip_protocol       = "-1" 
+  ip_protocol       = "-1"
 }
 
 resource "aws_vpc_security_group_ingress_rule" "alb_https" {
   security_group_id = aws_security_group.alb.id
-  
+
   from_port   = 443
   to_port     = 443
   ip_protocol = "tcp"
   cidr_ipv4   = "0.0.0.0/0"
-  
+
 }
 
 resource "aws_security_group" "ecs" {
@@ -170,5 +170,5 @@ resource "aws_vpc_security_group_ingress_rule" "ecs" {
 resource "aws_vpc_security_group_egress_rule" "ecs" {
   security_group_id = aws_security_group.ecs.id
   cidr_ipv4         = "0.0.0.0/0"
-  ip_protocol       = "-1" 
+  ip_protocol       = "-1"
 }

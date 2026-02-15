@@ -5,7 +5,7 @@ resource "aws_ecs_task_definition" "service" {
   memory                   = "512"
   network_mode             = "awsvpc"
   execution_role_arn       = var.ecs_task_execution_role_arn
-  
+
   container_definitions = jsonencode([
     {
       name      = "${var.app_name}_ecs_task"
@@ -13,29 +13,29 @@ resource "aws_ecs_task_definition" "service" {
       cpu       = 256
       memory    = 512
       essential = true
-      
+
       portMappings = [
         {
           containerPort = 5000
           hostPort      = 5000
         }
       ]
-      
+
       environment = [
         {
           name  = "OPENAI_API_KEY"
           value = var.openai_api_key
         }
       ]
-      
-logConfiguration = {
-  logDriver = "awslogs"
-  options = {
-    "awslogs-group"         = "/ecs/${var.app_name}"
-    "awslogs-region"        = "eu-west-2"
-    "awslogs-stream-prefix" = "ecs"
-  }
-}
+
+      logConfiguration = {
+        logDriver = "awslogs"
+        options = {
+          "awslogs-group"         = "/ecs/${var.app_name}"
+          "awslogs-region"        = "eu-west-2"
+          "awslogs-stream-prefix" = "ecs"
+        }
+      }
     }
   ])
 }
@@ -49,14 +49,9 @@ resource "aws_cloudwatch_log_group" "ecs" {
 resource "aws_ecs_service" "ecs_service" {
   name            = "${var.app_name}_ecs_service"
   cluster         = var.ecs_cluster_id
-  task_definition = aws_ecs_task_definition.service.arn 
+  task_definition = aws_ecs_task_definition.service.arn
   desired_count   = 2
-  launch_type = "FARGATE"
-
-  
-
-
-
+  launch_type     = "FARGATE"
 
   load_balancer {
     target_group_arn = var.target_group_arn
@@ -65,9 +60,9 @@ resource "aws_ecs_service" "ecs_service" {
   }
 
   network_configuration {
-    subnets = [ var.private_1_id, var.private_2_id ]
+    subnets          = [var.private_1_id, var.private_2_id]
     assign_public_ip = false
-    security_groups = [ var.ecs_security_group_id]
+    security_groups  = [var.ecs_security_group_id]
 
   }
 
