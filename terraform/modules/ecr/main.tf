@@ -1,6 +1,6 @@
 resource "aws_ecr_repository" "main" {
   name                 = "${var.app_name}_ecr"
-  image_tag_mutability = "IMMUTABLE"
+  image_tag_mutability = "MUTABLE"
   force_delete         = true
 
   image_scanning_configuration {
