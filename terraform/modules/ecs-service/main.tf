@@ -9,7 +9,7 @@ resource "aws_ecs_task_definition" "service" {
   container_definitions = jsonencode([
     {
       name      = "${var.app_name}_ecs_task"
-      image     = "romeodevdocker/youtube_transcript:latest"
+      image     = "207567788282.dkr.ecr.eu-west-2.amazonaws.com/youtube-transcript_ecr:latest"
       cpu       = 256
       memory    = 512
       essential = true
