@@ -10,7 +10,8 @@ The application runs in a Docker container hosted on Amazon ECS Fargate. The inf
 
 ## Architecture Diagram
 
-<img width="1151" height="1445" alt="Untitled Diagram drawio(1)" src="https://github.com/user-attachments/assets/7209afb4-cfdb-41a6-8898-3bd066cdeadc" />
+<img width="810" height="742" alt="image" src="https://github.com/user-attachments/assets/7a008ffc-2527-48ef-a5ea-81b92f3bb688" />
+
 
 
 ## Skills Demonstrated
