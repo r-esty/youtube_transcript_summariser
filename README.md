@@ -171,6 +171,16 @@ http://localhost:5000
 
 <img width="1914" height="974" alt="image" src="https://github.com/user-attachments/assets/7190ec47-6a10-41b0-b737-a55d592a5bf1" />
 
+**Trivy Scanner**
+
+<img width="1913" height="847" alt="image" src="https://github.com/user-attachments/assets/339729ff-ab2b-4018-bf49-935cad7a9e88" />
+
+**CODEQL**
+
+<img width="1913" height="832" alt="image" src="https://github.com/user-attachments/assets/fea4da4f-6c16-494a-8941-3d5dd087e6b2" />
+
+
+
 
 
 
