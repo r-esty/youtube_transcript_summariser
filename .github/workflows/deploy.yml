@@ -38,8 +38,15 @@ jobs:
           image-ref: youtube_transcript:latest
           format: 'sarif'
           output: 'trivy-image-results.sarif'
-          severity: ${{ env.SEVERITY_THRESHOLD }}
+          severity: HIGH,CRITICAL
+          exit-code: 1
           ignore-unfixed: true
+
+      - name: Upload Trivy SARIF report
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: trivy-image-results.sarif
+
       
       - name: Tag image for ECR
         run: docker tag youtube_transcript:latest 207567788282.dkr.ecr.eu-west-2.amazonaws.com/youtube-transcript_ecr
