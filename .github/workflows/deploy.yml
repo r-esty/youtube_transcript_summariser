@@ -35,6 +35,17 @@ jobs:
       - name: Tag image for ECR
         run: docker tag youtube_transcript:latest 207567788282.dkr.ecr.eu-west-2.amazonaws.com/youtube-transcript_ecr
       
+      - name: Scan image with Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'youtube_transcript:latest .'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'HIGH,CRITICAL'
+
+
       - name: Push to ECR
         run: docker push 207567788282.dkr.ecr.eu-west-2.amazonaws.com/youtube-transcript_ecr
       
